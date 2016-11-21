@@ -3,7 +3,7 @@ package com.hackathon2016.autopool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SplashScreenActivity extends AppCompatActivity {
+public class SplashScreenActivity extends AutoPoolBaseActiviry {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
