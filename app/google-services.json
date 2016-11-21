@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "369615481660",
+    "project_id": "firebase-autopool"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369615481660:android:0c4d740a4224a1d4",
+        "android_client_info": {
+          "package_name": "com.hackathon2016.autopool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369615481660-4nljj73u9eg2a1tdqv3aqllmu8bum07f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackathon2016.autopool",
+            "certificate_hash": "246A059CA477A946C2C9FDBAB04CF359FAC804D9"
+          }
+        },
+        {
+          "client_id": "369615481660-oom2ph1ahla5q8fqfgkctk5qqgjp8f6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxqmGrqgsFgmEZP_9YkAJilkmKh6yKon8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
