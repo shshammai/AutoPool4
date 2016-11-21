@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AutoPool</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
