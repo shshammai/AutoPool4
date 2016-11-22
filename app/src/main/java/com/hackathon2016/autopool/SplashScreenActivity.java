@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import static android.support.v7.media.MediaControlIntent.EXTRA_MESSAGE;
+//import static android.support.v7.media.MediaControlIntent.EXTRA_MESSAGE;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
