@@ -9,7 +9,7 @@ import io.realm.Realm;
  * Created by itayh on 21/11/2016.
  */
 
-public abstract class AutoPoolBaseActiviry extends AppCompatActivity {
+public abstract class AutoPoolBaseActivity extends AppCompatActivity {
 
     private Realm realm;
 

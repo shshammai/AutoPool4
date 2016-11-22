@@ -1,19 +1,36 @@
 package com.hackathon2016.autopool;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 //import static android.support.v7.media.MediaControlIntent.EXTRA_MESSAGE;
 
-public class SplashScreenActivity extends AutoPoolBaseActiviry {
+public class SplashScreenActivity extends AutoPoolBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+
+        final boolean isloggedin =false;
+
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+
+                if (isloggedin){
+                    startActivity(new Intent(getApplicationContext(), Login.class));
+                }
+                else{
+                    startActivity(new Intent(getApplicationContext(), DashBoard.class));
+                }
+            }
+        }, 5000);
     }
 
     /** Called when the user clicks the Send button */
