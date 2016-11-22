@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 //import static android.support.v7.media.MediaControlIntent.EXTRA_MESSAGE;
 
-public class SplashScreenActivity extends AppCompatActivity {
+public class SplashScreenActivity extends AutoPoolBaseActiviry {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

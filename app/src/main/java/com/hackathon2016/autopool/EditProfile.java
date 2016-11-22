@@ -3,7 +3,7 @@ package com.hackathon2016.autopool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class EditProfile extends AppCompatActivity {
+public class EditProfile extends AutoPoolBaseActiviry {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
