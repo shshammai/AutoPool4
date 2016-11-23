@@ -1,4 +1,4 @@
-package com.hackathon2016.autopool;
+package com.hackathon2016.autopool.BaseClasses;
 
 import android.app.Application;
 

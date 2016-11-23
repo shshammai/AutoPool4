@@ -3,12 +3,15 @@ package com.hackathon2016.autopool;
         import android.app.ProgressDialog;
         import android.content.Intent;
         import android.os.Bundle;
-        import android.support.v7.app.AppCompatActivity;
         import android.util.Log;
         import android.view.View;
         import android.widget.TextView;
 
+        import com.android.volley.Request;
         import com.android.volley.RequestQueue;
+        import com.android.volley.Response;
+        import com.android.volley.VolleyError;
+        import com.android.volley.toolbox.StringRequest;
         import com.android.volley.toolbox.Volley;
         import com.google.android.gms.auth.api.Auth;
         import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -20,6 +23,11 @@ package com.hackathon2016.autopool;
         import com.google.android.gms.common.api.OptionalPendingResult;
         import com.google.android.gms.common.api.ResultCallback;
         import com.google.android.gms.common.api.Status;
+        import com.hackathon2016.autopool.BaseClasses.AutoPoolBaseActivity;
+        import com.hackathon2016.autopool.Entities.Config;
+
+        import io.realm.Realm;
+        import io.realm.RealmResults;
 
 /**
  * Activity to demonstrate basic retrieval of the Google user's ID, email address, and basic
@@ -38,6 +46,16 @@ public class Login extends AutoPoolBaseActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Realm realm = Realm.getDefaultInstance();
+
+        final Config CurrentConfig = realm.where(Config.class).findFirst();
+
+        if (CurrentConfig.User!=null){
+
+        }
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -220,8 +238,36 @@ public class Login extends AutoPoolBaseActivity implements
 
     private void sign_in_Without_Google() {
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://31.168.140.81:7878/getScore/jack@gmail.com";
+        final TextView mTextView = (TextView) findViewById(R.id.status);
 
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://31.168.140.81:7878/getScore/jack@gmail.com"; //TODO get real URL
+
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        boolean connectionSuccedded=false;
+                        if (connectionSuccedded){
+                            //TODO if succedded
+                            mTextView.setText("succedded - Response is: "+ response.substring(0,500));
+                        }
+                        else{
+                            //TODO if failed
+                            // Display the first 500 characters of the response string.
+                            mTextView.setText("failed - Response is: "+ response.substring(0,500));
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mTextView.setText("That didn't work!");
+            }
+        });
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
     }
 }
