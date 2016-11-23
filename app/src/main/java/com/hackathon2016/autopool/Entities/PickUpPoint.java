@@ -6,7 +6,7 @@ package com.hackathon2016.autopool.Entities;
 
 public class PickUpPoint {
 
-    private String Name;
-    private Float Lat;
-    private Float Alt;
+    public String Name;
+    public Float Lat;
+    public Float Alt;
 }
