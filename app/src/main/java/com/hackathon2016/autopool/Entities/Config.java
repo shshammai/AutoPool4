@@ -8,5 +8,5 @@ import io.realm.RealmObject;
 
 public class Config extends RealmObject {
 
-    public LoggedInUser User;
+    private LoggedInUser User;
 }
