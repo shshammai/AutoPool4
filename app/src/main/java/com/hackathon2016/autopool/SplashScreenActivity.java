@@ -6,8 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import com.hackathon2016.autopool.Entities.Config;
+
 import java.util.Timer;
 import java.util.TimerTask;
+
+import io.realm.Realm;
 
 //import static android.support.v7.media.MediaControlIntent.EXTRA_MESSAGE;
 
@@ -19,13 +23,13 @@ public boolean IsLoggedIn =false;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-//        Realm realm = Realm.getDefaultInstance();
-//        final Config CurrentConfig = realm.where(Config.class).findFirst();
-//
-//        if (CurrentConfig.User!=null){
-//            IsLoggedIn=true;
-//            startActivity(new Intent(getApplicationContext(), DashBoard.class));
-//        }
+        Realm realm = Realm.getDefaultInstance();
+        final Config CurrentConfig = realm.where(Config.class).findFirst();
+
+        if (CurrentConfig.User!=null){
+            IsLoggedIn=true;
+            startActivity(new Intent(getApplicationContext(), DashBoard.class));
+        }
 
         new Timer().schedule(new TimerTask() {
             @Override
