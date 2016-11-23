@@ -46,8 +46,42 @@
                 android:textColor="@android:color/white"
                 android:textSize="14sp" />
 
+
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/NonGmailUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="true"
+            android:gravity="center"
+            android:maxLines="5"
+            android:padding="10dp"
+            android:scrollbars="vertical"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:text="@string/NonGmailUsername"/>
+
+        <TextView
+            android:id="@+id/NonGmailPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="true"
+            android:gravity="center"
+            android:maxLines="5"
+            android:padding="10dp"
+            android:scrollbars="vertical"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:text="@string/NonGmailPassword"/>
+
+        <Button
+            android:id="@+id/sign_in_Without_Google"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="visible"
+            android:text="@string/sign_in_Without_Google" />
 
         <RelativeLayout
             android:layout_width="fill_parent"

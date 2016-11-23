@@ -20,4 +20,7 @@
     <string name="desc_google_icon">Google</string>
     <string name="disconnect">disconnect</string>
     <string name="sign_out">sign out</string>
+    <string name="NonGmailUsername">Enter Username</string>
+    <string name="NonGmailPassword">enter password</string>
+    <string name="sign_in_Without_Google">sign in without google</string>
 </resources>

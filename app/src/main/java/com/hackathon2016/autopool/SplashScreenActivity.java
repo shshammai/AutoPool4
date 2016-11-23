@@ -61,7 +61,7 @@ public boolean isloggedin =false;
                     startActivity(new Intent(getApplicationContext(), DashBoard.class));
                 }
             }
-        }, 5000);
+        }, 2000);
     }
 
     /** Called when the user clicks the Send button */
