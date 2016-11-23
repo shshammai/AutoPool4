@@ -17,7 +17,7 @@
         android:text="Map"
         android:onClick="continueToMap"
         android:id="@+id/button"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="54dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
