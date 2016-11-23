@@ -8,6 +8,8 @@ package com.hackathon2016.autopool;
         import android.view.View;
         import android.widget.TextView;
 
+        import com.android.volley.RequestQueue;
+        import com.android.volley.toolbox.Volley;
         import com.google.android.gms.auth.api.Auth;
         import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
         import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -46,6 +48,9 @@ public class Login extends AutoPoolBaseActivity implements
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
+
+        findViewById(R.id.sign_in_Without_Google).setOnClickListener(this);
+
 
         // [START configure_signin]
         // Configure sign-in to request the user's ID, email address, and basic
@@ -207,6 +212,16 @@ public class Login extends AutoPoolBaseActivity implements
             case R.id.disconnect_button:
                 revokeAccess();
                 break;
+            case R.id.sign_in_Without_Google:
+                sign_in_Without_Google();
+                break;
         }
+    }
+
+    private void sign_in_Without_Google() {
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://31.168.140.81:7878/getScore/jack@gmail.com";
+
     }
 }
