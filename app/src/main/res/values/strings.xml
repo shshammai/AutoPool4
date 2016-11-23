@@ -23,4 +23,8 @@
     <string name="NonGmailUsername">Enter Username</string>
     <string name="NonGmailPassword">enter password</string>
     <string name="sign_in_Without_Google">sign in without google</string>
+    <string name="user_name">user name</string>
+    <string name="email_hint">email</string>
+    <string name="cars">cars</string>
+    <string name="stop_points">stops</string>
 </resources>
