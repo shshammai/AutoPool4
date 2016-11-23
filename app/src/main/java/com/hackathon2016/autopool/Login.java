@@ -2,9 +2,13 @@ package com.hackathon2016.autopool;
 
         import android.app.ProgressDialog;
         import android.content.Intent;
+        import android.graphics.Color;
+        import android.graphics.drawable.ColorDrawable;
+        import android.graphics.drawable.Drawable;
         import android.os.Bundle;
         import android.util.Log;
         import android.view.View;
+        import android.widget.EditText;
         import android.widget.TextView;
 
         import com.android.volley.Request;
@@ -228,34 +232,70 @@ public class Login extends AutoPoolBaseActivity implements
 
         final TextView mTextView = (TextView) findViewById(R.id.status);
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://31.168.140.81:7878/getScore/jack@gmail.com"; //TODO get real URL
+        EditText UserNameTxtBox = (EditText) findViewById(R.id.NonGmailUsername);
+        EditText PasswordTxtBox = (EditText) findViewById(R.id.NonGmailPassword);
 
-        // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
 
-                        boolean connectionSuccedded=false;
-                        if (connectionSuccedded){
-                            //TODO if succedded
-                            mTextView.setText("succedded - Response is: "+ response.substring(0,500));
+
+        String Username=UserNameTxtBox.getText().toString();
+        if (Username==getString(R.string.NonGmailUsername)){
+            Username="";
+        }
+
+        String Password=PasswordTxtBox.getText().toString();
+        if (Password==getString(R.string.NonGmailPassword)){
+            Password="";
+        }
+
+        String url =" http://31.168.140.81:7878/login/"+Username+"?password="+Password;
+
+        if (Username!="" && Password!=""){
+
+            RequestQueue queue = Volley.newRequestQueue(this);
+            // Request a string response from the provided URL.
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            boolean connectionSuccedded=false;
+                            if (connectionSuccedded){
+                                //TODO if succedded
+                                mTextView.setText("succedded - Response is: "+ response.substring(0,500));
+                            }
+                            else{
+                                //TODO if failed
+                                // Display the first 500 characters of the response string.
+                                mTextView.setText("failed - Response is: "+ response.substring(0,500));
+                            }
+
                         }
-                        else{
-                            //TODO if failed
-                            // Display the first 500 characters of the response string.
-                            mTextView.setText("failed - Response is: "+ response.substring(0,500));
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                mTextView.setText("That didn't work!");
-            }
-        });
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    mTextView.setText("That didn't work!");
+                }
+            });
 // Add the request to the RequestQueue.
-        queue.add(stringRequest);
+            queue.add(stringRequest);
+        }
+    }
+
+    private void makeEditable(boolean isEditable,EditText et){
+        if(isEditable){
+            et.setBackgroundDrawable(Drawable.createFromPath("Give the textbox background here"));//You can store it in some variable and use it over here while making non editable.
+            et.setFocusable(true);
+            et.setEnabled(true);
+            et.setClickable(true);
+            et.setFocusableInTouchMode(true);
+            //et.setKeyListener("Set edit text key listener here"); //You can store it in some variable and use it over here while making non editable.
+        }else{
+            et.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+            et.setFocusable(false);
+            et.setClickable(false);
+            et.setFocusableInTouchMode(false);
+            et.setEnabled(false);
+            et.setKeyListener(null);
+        }
     }
 }
