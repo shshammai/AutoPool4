@@ -23,11 +23,6 @@ package com.hackathon2016.autopool;
         import com.google.android.gms.common.api.OptionalPendingResult;
         import com.google.android.gms.common.api.ResultCallback;
         import com.google.android.gms.common.api.Status;
-        import com.hackathon2016.autopool.BaseClasses.AutoPoolBaseActivity;
-        import com.hackathon2016.autopool.Entities.Config;
-
-        import io.realm.Realm;
-        import io.realm.RealmResults;
 
 /**
  * Activity to demonstrate basic retrieval of the Google user's ID, email address, and basic
@@ -47,13 +42,6 @@ public class Login extends AutoPoolBaseActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Realm realm = Realm.getDefaultInstance();
-
-        final Config CurrentConfig = realm.where(Config.class).findFirst();
-
-        if (CurrentConfig.User!=null){
-
-        }
 
 
         super.onCreate(savedInstanceState);

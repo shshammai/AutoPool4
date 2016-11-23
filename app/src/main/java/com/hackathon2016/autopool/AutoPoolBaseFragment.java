@@ -1,4 +1,4 @@
-package com.hackathon2016.autopool.BaseClasses;
+package com.hackathon2016.autopool;
 import android.app.Fragment;
 
 import io.realm.Realm;

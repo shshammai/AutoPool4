@@ -1,7 +1,6 @@
-package com.hackathon2016.autopool.BaseClasses;
+package com.hackathon2016.autopool;
 
 import android.app.Application;
-
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
@@ -15,7 +14,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Realm.init(this);
-        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().build();
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().build();
         Realm.setDefaultConfiguration(realmConfiguration);
     }
 }
