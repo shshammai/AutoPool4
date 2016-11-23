@@ -2,6 +2,8 @@ package com.hackathon2016.autopool;
 
 import android.os.Bundle;
 
+import com.hackathon2016.autopool.BaseClasses.AutoPoolBaseActivity;
+
 public class DashBoard extends AutoPoolBaseActivity {
 
     @Override

@@ -2,14 +2,10 @@ package com.hackathon2016.autopool;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.OptionalPendingResult;
+import com.hackathon2016.autopool.BaseClasses.AutoPoolBaseActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;

@@ -1,4 +1,4 @@
-package com.hackathon2016.autopool;
+package com.hackathon2016.autopool.BaseClasses;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
