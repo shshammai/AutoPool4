@@ -8,8 +8,8 @@ import io.realm.RealmObject;
 
 public class LoggedInUser extends RealmObject {
 
-    private String Email;
-    private String Name;
-    private String PhoneNumber;
-    private PickUpPoint DefaultPickupPoint;
+    public String Email;
+    public String Name;
+    public String PhoneNumber;
+    public PickUpPoint DefaultPickupPoint;
 }
