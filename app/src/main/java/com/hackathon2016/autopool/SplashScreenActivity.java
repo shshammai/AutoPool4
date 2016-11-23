@@ -24,12 +24,18 @@ public boolean IsLoggedIn =false;
         setContentView(R.layout.activity_splash_screen);
 
         Realm realm = Realm.getDefaultInstance();
+        try{
         final Config CurrentConfig = realm.where(Config.class).findFirst();
 
         if (CurrentConfig.User!=null){
             IsLoggedIn=true;
             startActivity(new Intent(getApplicationContext(), DashBoard.class));
         }
+        }
+        catch (Exception e){
+
+        }
+
 
         new Timer().schedule(new TimerTask() {
             @Override
