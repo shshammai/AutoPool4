@@ -15,6 +15,8 @@ package com.hackathon2016.autopool;
         import com.android.volley.RequestQueue;
         import com.android.volley.Response;
         import com.android.volley.VolleyError;
+        import com.android.volley.toolbox.JsonObjectRequest;
+        import com.android.volley.toolbox.JsonRequest;
         import com.android.volley.toolbox.StringRequest;
         import com.android.volley.toolbox.Volley;
         import com.google.android.gms.auth.api.Auth;
@@ -27,6 +29,9 @@ package com.hackathon2016.autopool;
         import com.google.android.gms.common.api.OptionalPendingResult;
         import com.google.android.gms.common.api.ResultCallback;
         import com.google.android.gms.common.api.Status;
+
+        import org.json.JSONException;
+        import org.json.JSONObject;
 
 /**
  * Activity to demonstrate basic retrieval of the Google user's ID, email address, and basic
@@ -235,49 +240,57 @@ public class Login extends AutoPoolBaseActivity implements
         EditText UserNameTxtBox = (EditText) findViewById(R.id.NonGmailUsername);
         EditText PasswordTxtBox = (EditText) findViewById(R.id.NonGmailPassword);
 
-
-
         String Username=UserNameTxtBox.getText().toString();
-        if (Username==getString(R.string.NonGmailUsername)){
-            Username="";
-        }
+//        if (Username==getString(R.string.NonGmailUsername)){
+//            Username="";
+//        }
 
         String Password=PasswordTxtBox.getText().toString();
-        if (Password==getString(R.string.NonGmailPassword)){
-            Password="";
-        }
+//        if (Password==getString(R.string.NonGmailPassword)){
+//            Password="";
+//        }
 
         String url =" http://31.168.140.81:7878/login/"+Username+"?password="+Password;
 
         if (Username!="" && Password!=""){
 
             RequestQueue queue = Volley.newRequestQueue(this);
-            // Request a string response from the provided URL.
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                    new Response.Listener<String>() {
+            // prepare the Request
+            JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                    new Response.Listener<JSONObject>()
+                    {
                         @Override
-                        public void onResponse(String response) {
+                        public void onResponse(JSONObject response) {
+                            // display response
+                            String result="";
+                            try{
+                                result = response.get("Result").toString();
+                            }
+                            catch (JSONException e){
 
-                            boolean connectionSuccedded=false;
-                            if (connectionSuccedded){
-                                //TODO if succedded
-                                mTextView.setText("succedded - Response is: "+ response.substring(0,500));
+                            }
+                            if (result.equals("Login OK")){
+                                //TODO  write to realm
+                                startActivity(new Intent(getApplicationContext(), DashBoard.class));
                             }
                             else{
-                                //TODO if failed
-                                // Display the first 500 characters of the response string.
-                                mTextView.setText("failed - Response is: "+ response.substring(0,500));
+                                mTextView.setText("Incorrect Password");
                             }
-
+                            Log.d("Response", response.toString());
                         }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    mTextView.setText("That didn't work!");
-                }
-            });
+                    },
+                    new Response.ErrorListener()
+                    {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.d("Error.Response", error.toString());
+                        }
+                    }
+            );
+
+
 // Add the request to the RequestQueue.
-            queue.add(stringRequest);
+            queue.add(getRequest);
         }
     }
 
